@@ -5,6 +5,7 @@ import API from '../utils/api';
 import toast from 'react-hot-toast';
 import { MdFace, MdCheckCircle, MdCameraAlt, MdUploadFile, MdRefresh, MdInfo } from 'react-icons/md';
 
+// eslint-disable-next-line no-unused-vars
 const MODELS_URL = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights';
 
 // ── Photo URL helper ──────────────────────────────────────────────────────────
@@ -26,7 +27,7 @@ export default function FaceAttendance() {
   const [status,             setStatus]             = useState('idle');
   const [recognizedStudent,  setRecognizedStudent]  = useState(null);
   const [labeledDescriptors, setLabeledDescriptors] = useState([]);
-  const [allStudents,        setAllStudents]        = useState([]);
+
   const [loading,            setLoading]            = useState(true);
   const [loadProgress,       setLoadProgress]       = useState('');
   const [scanMode,           setScanMode]           = useState('camera'); // camera | photo
@@ -55,14 +56,14 @@ export default function FaceAttendance() {
       }
     };
     init();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    return () => { if (intervalRef.current) { clearInterval(intervalRef.current); } }; // eslint-disable-line
   }, []);
 
   // ── Load enrolled face descriptors ────────────────────────────────────────
   const loadDescriptors = async () => {
     try {
       const { data } = await API.get('/students/face/all-descriptors');
-      setAllStudents(data);
+
       if (!data.length) { setStatus('no_faces'); return; }
 
       const valid = data.filter(s => s.faceDescriptor && s.faceDescriptor.length > 0);
