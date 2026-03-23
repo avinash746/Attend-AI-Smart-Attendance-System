@@ -11,7 +11,7 @@
 
 **A full-stack AI-powered attendance system with Face Recognition, Fingerprint (WebAuthn), Manual Form, and 6 AI/ML features.**
 
-[Live Demo](https://attend-ai-smart-attendance-system-1.onrender.com/) • [Report Bug](#) • [Request Feature](#)
+[Live](https://attend-ai-smart-attendance-system-1.onrender.com/) • [Report Bug](#) • [Request Feature](#)
 
 </div>
 
